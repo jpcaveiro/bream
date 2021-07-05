@@ -21,9 +21,19 @@ To create an exam, using this packagem, one must **stricly** (sorry)  follow thi
 a. Colocar como subcategoria de outra que seja vísivel no topo
 b. Voltar a promover
 
+**importar**
+
+![image](https://user-images.githubusercontent.com/11158247/124457999-61226e00-dd84-11eb-96fb-90e492c1a866.png)
+
+
+
 2. No processo de importar abrir "Geral" => "Para em erros = Não"
-3. Importar
-4. Procurar categorias com (0) (onde houve erros)
+
+![image](https://user-images.githubusercontent.com/11158247/124458091-7eefd300-dd84-11eb-8def-2c4ddebf358e.png)
+
+
+4. Importar
+5. Procurar categorias com (0) (onde houve erros)
 
 Para apagar tudo:
 
