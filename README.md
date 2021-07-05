@@ -12,3 +12,25 @@ To create an exam, using this packagem, one must **stricly** (sorry)  follow thi
 
 (to be continued)
 
+# moodle
+
+1. Criar a categoria "importados"
+
+É útil que a categoria "importados" surja no topo:
+
+a. Colocar como subcategoria de outra que seja vísivel no topo
+b. Voltar a promover
+
+2. No processo de importar abrir "Geral" => "Para em erros = Não"
+3. Importar
+4. Procurar categorias com (0) (onde houve erros)
+
+Para apagar tudo:
+
+1. abrir a categoria principal (a do exame em causa)
+2. Selecionar todos os exercícios incluindo descendentes
+3. Apagar
+4. Depois, apagar categorias uma a uma!!
+
+
+
