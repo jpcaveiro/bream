@@ -1,0 +1,784 @@
+---
+title: "2020-2021 Exame Especial 20-21 de Bioestatística"
+author: "JP Cruz and A Freitas"
+date: "3/09/2021"
+output: html_document
+---
+
+### Instruções e Anotações
+
+* Esta secção não aparece ao aluno.
+
+
+Escrever matemática assim para que no moodle se veja bem:
+
+\\( \\beta_0 \\)
+
+
+Todas, atenção **todas**, as secções com # serão usadas como "Questão".
+
+O formato é:
+
+* `# Capítulo X (alínea?) - descrição - ESSAY`
+* `# Capítulo X (alínea?) - descrição - NUMERICAL`
+* `# Capítulo X (alínea?) - descrição - MULTICHOICE`
+* `# Capítulo X (alínea?) - descrição - CLOZE`
+
+Interpretação:
+
+* `#` quer dizer questão
+
+* entre `#` e `##` é uma zona de texto e comandos que o aluno não vai ver; serve para produzir ou documentar a questão.
+
+* `##` o texto da questão que o aluno vai ver; esta secção chama-se "variante"  e mesmo que seja só uma deve existir (senão o aluno nada lê)
+
+* `###` apenas nas respostas da variante (casos NUMERICAL e MULTICHOICE)
+
+* `###` se existir, este segundo `###` indica o feedback da variante.
+
+
+Seguem exemplos.
+
+
+
+```{r setup, include=FALSE}
+
+
+# Escolher se é a versão já próxima da FINAL ou versão CONSTRUÇÃO mais usada no início de desenvolvimento do exame.
+
+# -------------
+# Versão FINAL
+# -------------
+
+# A ser usada numa fase avançada de pequenos arranjos e antes de se converter para o moodle
+# TODO: talvez esta situação possa ser controlada no código meguar.
+knitr::opts_chunk$set(echo = FALSE, results='hide', message=FALSE, fig.show='hide')
+
+
+# ---------------------------
+# Versão CONSTRUÇÃO do exame
+# ---------------------------
+
+# A ser usada antes da conversão de Rmd para o moodle-xml. Assim todos os cálculos e gráficos ficam visíveis:
+#knitr::opts_chunk$set(echo = TRUE, results='show', message=TRUE, fig.show='show')
+
+# -------------------------
+# SELECIONAR O QUE MOSTRAR
+# -------------------------
+
+# Sempre que se deseje que o output surja ao aluno deve ser colocados  comandos:   
+#
+# {r, results='show'}
+# {r, fig.show='show'}
+# {r, results='show', fig.show='show'}
+
+
+# ---------------------------------------
+# Controlos do teste gerado com "knit"
+# ---------------------------------------
+
+# Gera sempre o mesmo teste a cada "knit" ainda que o melhor seja fazer 
+# "samples" à parte e colar valores na questão para controlar logo
+# "à nascença" a qualidade do enunciado:
+
+# set.seed(SEED) deve ser colocado em cada questão
+# por forma a que se possam introduzir questões
+# pelo meio sem alterar valores gerados das existentes
+
+SEED = 22 
+
+# set.seet(SEED) #usar este comando em cada questão
+
+
+```
+
+
+
+
+
+
+# Capítulo 1 - medidas - ESSAY
+
+
+Daqui até `##` é uma zona de leitura/geração de dados e experimentação de cada questão que não passa para o moodle. Os resultados, após `knitr`, só são visíveis se em cima se ativar o modo "CONSTRUÇÃO" do teste:
+
+
+```{r}
+1+1
+```
+
+Dados fixos:
+
+```{r}
+# o estudante não vê isto
+dados <-c(10, 50, 40, 71, 72, 70, 69, 50, 73, 76, 70, 80, 78)
+length(dados)
+```
+```{r}
+# o estudante não vê isto
+dados
+```
+
+
+
+```{r}
+d = dados #para usar apenas "d"
+summary(dados)
+```
+
+**Outras ideias para questões**
+
+* Indique, **justificando**, o valor lógico da frase: "Podemos concluir que em pelo menos 75% dos anos em estudo registaram-se menos de 50 novos produtos oriundos de agricultura biológica."
+
+| ano | 1993 | 1994 | 1995 | 1996 | 1997 | 1998 | 1999 | 2000 | 2001 | 2002 | 2003 | 2004 | 2005 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| x | `r d[1]` | `r d[2]` | `r d[3]` | `r d[4]` | `r d[5]` | `r d[6]` | `r d[7]` | `r d[8]` | `r d[9]` | `r d[10]` | `r d[11]` | `r d[12]` | `r d[13]` | 
+
+
+## variante única
+
+O uso de boas práticas de gestão da exploração agrícola tem demonstrado tendência para um crescente desenvolvimento da agrícultura biológica, fomentando deste modo a biodiversidade, os ciclos biológicos e a atividade biológica do solo.
+
+Considere a variável X que representa o número de novos produtos que entram no mercado em cada ano oriundos de agrícultura biológica.
+
+
+A seguinte tabela indica os valores de X observados de 1993 a 2005:
+
+
+<!--tabela bonita no final com valores-->
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:2px auto;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-i49k{background-color:#ffce93;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:center;vertical-align:center}
+</style>
+<table class="tg">
+<tbody>
+  <tr>
+    <td class="tg-0lax">ano</td>
+    <td class="tg-i49k">1993</td>
+    <td class="tg-i49k">1994</td>
+    <td class="tg-i49k">1995</td>
+    <td class="tg-i49k">1996</td>
+    <td class="tg-i49k">1997</td>
+    <td class="tg-i49k">1998</td>
+    <td class="tg-i49k">1999</td>
+    <td class="tg-i49k">2000</td>
+    <td class="tg-i49k">2001</td>
+    <td class="tg-i49k">2002</td>
+    <td class="tg-i49k">2003</td>
+    <td class="tg-i49k">2004</td>
+    <td class="tg-i49k">2005</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">x</td>
+    <td class="tg-baqh">`r d[1]`</td>
+    <td class="tg-baqh">`r d[2]`</td>
+    <td class="tg-baqh">`r d[3]`</td>
+    <td class="tg-baqh">`r d[4]`</td>
+    <td class="tg-baqh">`r d[5]`</td>
+    <td class="tg-baqh">`r d[6]`</td>
+    <td class="tg-baqh">`r d[7]`</td>
+    <td class="tg-baqh">`r d[8]`</td>
+    <td class="tg-baqh">`r d[9]`</td>
+    <td class="tg-baqh">`r d[10]`</td>
+    <td class="tg-baqh">`r d[11]`</td>
+    <td class="tg-baqh">`r d[12]`</td>
+    <td class="tg-baqh">`r d[13]`</td>
+  </tr>
+</tbody>
+</table>
+
+
+Considere a seguinte caixa-de-bigodes:
+
+```{r,  fig.show='show'}
+boxplot(dados, ylab="número de novos produtos")
+```
+
+
+**(i)** Determine o terceiro quartil recorrendo a cálculos apropriados sobre a amostra,  devendo justificar como encontra o seu valor. 
+
+**(ii)** Indique o primeiro quartil e diga o que significa. 
+
+***(iii)***  Considere a caixa-de-bigodes dos dados. Responda, justificando, qual o valor atípico e uma possível explicação para esse valor ter ocorrido.
+
+
+**(iv)**   Considere a caixa-de-bigodes dos dados e responda justificando o que indica a linha escura no gráfico? (responda cuidadosamente no contexto do problema efetuando todas as interpretações possíveis)
+
+
+**(v)** O que pode concluir sobre a simetria da distribuição? (justifique)
+
+
+
+### feedback
+
+(Consulte o docente se necessário.)
+
+
+
+# Capítulo 2 (a) - Poisson - NUMERICAL
+
+
+
+## variante única
+
+Admite-se que, em 2011, o número de produtos de agricultura biológica comprados por agregado familiar e por semana, seja modelado por uma distribuição de Poisson de média 3 (unidades).
+
+Determine a probabilidade de serem compradas, semanalmente e por família, mais de 5 unidades (estritamente).
+
+(Use 4 casas decimais e vírgula nas respostas numéricas.)
+
+```{r}
+# o estudante não vê isto
+1-ppois(5, 3)
+1-ppois(4, 3)
+ppois(5, 3)
+```
+
+
+### respostas
+
+
+* "answer": `r 1-ppois(5, 3)`, "tol": 0.01, "fraction": 100, "feedback" : "Resposta correta."
+* "answer": `r 1-ppois(4, 3)`, "tol": 0.01, "fraction": 50, "feedback" : "1-P(X<=5) e não <=4."
+* "answer": `r ppois(5, 3)`, "tol": 0.01, "fraction": 25, "feedback" : "'Mais de 5' começa no 6, 7, 8, ... ."
+
+
+### feedback
+
+Em notação R: `1-ppois(5, lambda=3)`
+
+
+
+
+
+# Capítulo 2 (b) - normal de barra X - NUMERICAL
+
+
+
+
+## variante única
+
+**Repetição do contexto anterior.** Admite-se que, em 2011, o número de produtos de agricultura biológica comprados por agregado familiar e por semana, seja modelado por uma distribuição de Poisson de média 3 (unidades).
+
+**Questão:** Use o TLC para determinar a probabilidade de em 40 famílias, numa semana, serem consumidos entre 80 e 120 produtos de produção biológica.
+
+(Use 4 casas decimais e vírgula.)
+
+
+### respostas
+
+```{r}
+#o aluno não vê isto:
+m = 40*3; st = sqrt(40*3)
+pnorm(120.5,m,st) - pnorm(79.5,m,st)
+pnorm(120,m,st) - pnorm(80,m,st)
+pnorm(120,m,st^2) - pnorm(80,m,st^2)
+```
+
+
+
+* "answer": `r pnorm(120.5,m,st) - pnorm(79.5,m,st)`, "tol": 0.03, "fraction": 100, "feedback" : "Resposta correta."
+* "answer": `r pnorm(120,m,st^2) - pnorm(80,m,st^2)`, "tol": 0.03, "fraction": 50, "feedback" : "Faltou sqrt(VAR) para obter o desvio-padrão."
+
+### feedback
+
+Do TLC:
+
+* T = X1 + X40 aprox Normal(40 x 3, 40 x 3)
+
+
+
+# Capítulo 2 (c) - TLC - MULTICHOICE
+
+
+
+## variante única
+
+Considere que se desconhece a real distribuição de X = **número de compras de embalagens de maças de agricultura biológica em 40 compras efetuadas por agregados familiares aleatórios**. A probabilidade de compra de embalagens de maças biológicas é 0.01. 
+
+A distribuição da v.a. X é 
+
+### respostas
+
+* binomial;
+* normal;
+* Poisson;
+* genérica e usa-se o TLC (n>30);
+
+### feedback
+
+
+X = número de 'sucessos' em n experiências aleatórias repetidas é sempre Binomial. Usa-se genérica quando não se consegue inferir a distribuição de uma v.a..
+
+
+
+# Capítulo 3 - (usa dados do 4.1) IC com tinterval - NUMERICAL
+
+
+```{r}
+set.seed(SEED+4)
+peso_bio = rnorm(20, 14, 3) #tb é usdo na questão 4.1
+
+xmean = round(mean(peso_bio),3)
+sd_pesobio = round(sd(peso_bio),3)
+t = qt(0.995,19)
+lesq = xmean-t*sd_pesobio/sqrt(20)
+ldir = xmean+t*sd_pesobio/sqrt(20)
+c(lesq,ldir)
+```
+IC TInterval = [ {:NUMERICAL:=`r lesq`:0.1} , {:NUMERICAL:=`r ldir`:0.1} ] 
+
+
+```{r}
+z = qnorm(0.995)
+lesq_norm = xmean-z*sd_pesobio/sqrt(20)
+lesq_norm
+```
+
+## variante  única
+
+Foram estudadas 20 árvores de produção de macieiras (Malus domestica) de agricultura biológica e para cada árvore foi pesado o total de frutos saudáveis. A média amostral, obtida sobre os 20 pesos, é `r xmean` e o desvio padrão corrigido é `r sd_pesobio`.
+
+
+Calcule um intervalo de confiança a 99% para o peso total médio de frutos saudáveis, por
+macieira, em agricultura biológica.
+
+O **lado esquerdo** do IC é:
+
+### respostas
+
+* "answer": `r lesq`, "tol": 0.05, "fraction": 100, "feedback" : "Resposta correta obtida com T Interval."
+* "answer": `r lesq_norm`, "tol": 0.05, "fraction": 50, "feedback" : "Resposta parcialmente correta pois foi obtida com Z Interval,"
+
+### feedback 
+
+Realizar um T Interval sobre os dados porque se sabe que os dados são normais e com variância populacional desconhecida.
+
+
+# Capítulo 4.1 - comparação de duas amostras independentes - ESSAY
+
+```{r}
+# Lilliefors lillie.test
+# https://cran.r-project.org/web/packages/nortest/nortest.pdf
+library(nortest)
+
+# Levene test
+library(DescTools)
+# https://search.r-project.org/CRAN/refmans/DescTools/html/LeveneTest.html
+```
+
+
+
+```{r}
+#ver questão anterior
+#set.seed(SEED+4)
+#peso_bio = rnorm(20, 14, 3)
+
+peso_ind = rnorm(20, 16, 3)
+
+
+# Normality
+shapiro.test(peso_bio)
+lillie.test(peso_bio)
+shapiro.test(peso_ind)
+lillie.test(peso_ind)
+```
+
+
+
+```{r}
+
+
+peso = c( peso_bio, peso_ind )
+tipo = c( rep("bio", 20),   rep("ind", 20) )
+
+dados = data.frame(peso=peso, tipo=tipo)
+
+
+# fazer o teste t para amostras emparelhadas
+t.test(peso~tipo,data=dados, paired=FALSE, var.equal=TRUE)
+#t.test(peso~tipo,data=dados, paired=FALSE, var.equal=FALSE)
+t.test(peso~tipo,data=dados, paired=TRUE)
+```
+
+
+## variante única
+ 
+No sentido de demonstrar que a agricultura biológica também pode ser competitiva, comparou-se a produção de macieiras (Malus domestica) de agricultura biológica e de agricultura industrializada.
+
+Foram usadas no estudo 20 árvores de cada tipo (com idades semelhantes) e para cada árvore foi pesado o total de frutos saudáveis.
+
+Seguem duas tabelas de resultados.
+
+
+<pre>
+	Two Sample t-test
+
+data:  peso by tipo
+t = -1.3713, df = 38, p-value = 0.1783
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.5679338  0.6862138
+sample estimates:
+mean in group bio mean in group ind 
+         14.45894          15.89980 
+</pre>
+
+<pre>
+	Paired t-test
+
+data:  peso by tipo
+t = -1.2543, df = 19, p-value = 0.2249
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.8451352  0.9634152
+sample estimates:
+mean of the differences 
+               -1.44086 
+</pre>
+
+
+**(i)** O que está a ser testado? Identifique as hipóteses estatísticas em causa para o problema justificando a sua resposta.
+
+**(ii)** Qual o valor-p apropriado para a resposta dada em (i)? Justifique a sua resposta.
+
+
+**(iii)** Considere o seguinte *output* obtido com os dados dos pesos de fruta de  agricultura biológica (o resultado para a agricultura industrial não é apresentado). 
+
+
+<pre>
+	Shapiro-Wilk normality test
+
+data:  peso_bio
+W = 0.97833, p-value = 0.9108
+
+	Lilliefors (Kolmogorov-Smirnov) normality test
+
+data:  peso_bio
+D = 0.12889, p-value = 0.5182
+</pre>
+
+O que está em teste? Qual o teste mais apropriado e qual a conclusão apropriada? Justifique a sua resposta.
+
+
+### feedback
+
+Trata-se de um teste de amostras independentes para dados normais, com variâncias homogéneas e dados normais.
+
+(Consulte o docente se necessário).
+
+
+
+
+
+
+# Capítulo 4.2 (a) - anova - ESSAY
+
+```{r}
+
+set.seed(SEED+42)
+
+NN = 10 
+
+teor000 = rnorm(NN, 10, 15)
+teor025 = rnorm(NN, 10, 15)
+teor050 = rnorm(NN, 20, 15)
+teor075 = rnorm(NN, 20, 15)
+teor100 = rnorm(NN, 20, 15)
+
+
+dados = data.frame(
+     teor=c( teor000, teor025, teor050, teor075, teor100 ),
+     dose=c( rep("0%", NN),  
+             rep("25%", NN),  
+             rep("50%", NN),  
+             rep("75%", NN),  
+             rep("100%", NN)
+     )
+)
+
+modelo = aov( teor ~ dose, data=dados)
+summary(modelo)
+```
+
+
+
+```{r}
+library("BFpack")
+bartlett_test(dados$teor,dados$dose)
+```
+
+## variante única
+
+Para estudar o efeito sobre os teores de metais pesados nas maças quando as macieiras estão submetidas à aplicação de lodo de esgotos como fertilizante orgânico, efetuou-se uma ANOVA a um fator, de efeitos fixos. Escolheram-se, ao acaso, 50 macieiras da mesma idade e estas foram divididas ao acaso por 5 grupos de 10 árvores. Cada grupo foi sujeito a diferentes doses de lodo, nomeadamente de 0%, 25%, 50%, 75% e 100% em relação à adubação mineral nitrogenada recomendada, complementadas com adubos minerais. 
+
+Finalmente determinaram-se os teores médios de metais pesados nos frutos das árvores em estudo.
+
+<pre>
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+dose         4   4221  1055.2   FOBS   0.00392
+Residuals   45  10595   235.5                   
+</pre>
+
+Efetue o teste ANOVA indicando 
+
+**(i)** O fator e a variável dependente.
+
+**(ii)** As hipóteses em teste explicadas no contexto do problema,
+
+**(iii)** A conclusão no contexto do problema.
+
+
+### feedback 
+
+Teste ANOVA.
+
+
+# Capítulo 4.2 (b) - anova - NUMERICAL
+
+
+
+## variante única 
+
+No contexto do enunciado anterior, qual o valor da estatística de teste da ANOVA (valor FOBS) que deve constar na tabela?
+
+<pre>
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+dose         4   4221  1055.2   FOBS   0.00392
+Residuals   45  10595   235.5                   
+</pre>
+
+
+### respostas
+
+
+* "answer": `r 4.482`, "tol": 0.05, "fraction": 100, "feedback" : "Resposta correta."
+
+### feedback 
+
+Deve obter-se o quantil para o valor de probabilidade à direita 0.00392 ou calcular o valor da estatística por FOBS = MS(dose) / MS(teor).
+
+
+# Capítulo 4.2 (c) - anova - MULTICHOICE
+
+
+
+## variante única 
+
+No contexto do enuncado anterior, qual a conclusão da seguinte tabela obtida com os dados do problema:
+
+
+<pre>
+	Bartlett test of homogeneity of variances
+
+data:  dados$teor and dados$dose
+Bartlett's K-squared = 2.0499, df = 4, p-value = 0.7266
+</pre>
+
+### respostas
+
+
+* existe homogeneidade das variâncias dos teores de metais pesados obtidos em cada um dos cinco grupos 
+* existe homogeneidade das variâncias das doses de lodo obtidas em cada um dos cinco grupos
+* o pressupostos de normalidade dos dados para a ANOVA é verificado em cada grupo de teores de metais pesados 
+* o pressupostos de normalidade dos dados para a ANOVA é verificado em cada grupo de doses de lodo
+
+
+### feedback 
+
+O Teste de Bartlett testa a homogeneidade ("igualdade") de variâncias na variável resposta que é o teor de metais pesados.
+
+
+
+# Capítulo 5.1 - maças, biologia, indústria - ESSAY
+
+
+
+## variante única
+
+O seguinte gráfico de dispersão apresenta a relação entre os anos e o número de novos produtos biológicos no mercado. Será  aconselhável recorrer ao cálculo do coeficiente de Pearson ou ao cálculo do coeficiente de Spearman? Justifique adequadamente a sua decisão.
+
+```{r, fig.show='show'}
+# o estudante não vê isto
+dados <-c(10, 50, 40, 71, 72, 70, 69, 50, 73, 76, 70, 80, 78)
+anos <- 1993:2005
+plot(anos,dados)
+```
+
+### feedback
+
+Testes de correlação.
+
+
+# Capítulo 5.2 - maças, biologia, indústria - ESSAY
+
+
+```{r}
+# o estudante não vê isto
+dados <-c(10, 50, 40, 71, 72, 70, 69, 50, 73, 76, 70, 80, 78)
+anos <- 1993:2005
+r = lm(dados~anos)
+summary(r)
+```
+
+
+## variante única
+
+Considere o estudo de regressão linear aplicado aos dados (x=ano,Y=número de novos produtos). A tabela de coeficientes é a seguinte:
+
+<pre>
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)   
+(Intercept) -7351.643   2108.285  -3.487  0.00509 
+anos            3.709      1.055   3.517  0.00483 
+</pre>
+
+**(i)** Qual a equação de reta? Indique o que significam os coeficientes.
+
+**(ii)** Para o ano 2000 qual o valor esperado para o número de novos produtos? 
+
+**(iii)** Qual o valor do resíduo ( erro, \\(\\epsilon\\) ) para esse ano?
+
+**(iv)** O que pode concluir com os valores da seguinte tabela?
+
+<pre>
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-29.978  -7.066   2.643   6.769  19.8
+</pre>
+
+
+### feedback
+
+
+
+# Capítulo 6 - Teste de Independência -  CLOZE
+
+```{r}
+empresas <- matrix(c( 30, 25,
+                     20, 30,
+                     35, 37    #depois do 100 não tem vírgula
+                   ),ncol=2,byrow=TRUE)
+colnames(empresas) <- c("Biológica","Industrializada")
+rownames(empresas) <- c("norte","centro","sul")
+plantas <- as.table(empresas)
+chi_result = chisq.test(empresas, correct=FALSE)
+chi_result
+```
+
+
+```{r}
+empresas
+```
+
+```{r}
+chi_result$expected
+```
+
+* Teste ao gerador de tabelas html: https://www.tablesgenerator.com/html_tables
+
+
+## variante única
+
+Pretende-se avaliar se, em Portugal, existe dependência entre o tipo de agricultura que se pratica (biológica ou de cariz industrial) e a localização (norte, centro e sul). Num encontro de empresários agrícolas foram inquiridos 177 empresários selecionados ao acaso. Os resultados estão condensados na seguinte tabela de contingência:
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-i49k{background-color:#ffce93;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tbody>
+  <tr>
+    <td class="tg-0lax">contingência</td>
+    <td class="tg-i49k">Biológica</td>
+    <td class="tg-i49k">Indústria</td>
+  </tr>
+  <tr>
+    <td class="tg-i49k">norte</td>
+    <td class="tg-baqh">30</td>
+    <td class="tg-baqh">25</td>
+  </tr>
+  <tr>
+    <td class="tg-i49k">centro</td>
+    <td class="tg-baqh">20</td>
+    <td class="tg-baqh">30</td>
+  </tr>
+  <tr>
+    <td class="tg-i49k">sul</td>
+    <td class="tg-baqh">35</td>
+    <td class="tg-baqh">3</td>
+  </tr>
+</tbody>
+</table>
+
+
+**(i)** Complete, justificando, a seguinte tabela de frequências esperadas sob a validade
+da hipótese de independência entre a localização e o tipo de agricultura:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tbody>
+  <tr>
+    <td class="tg-0lax">esperadas</td>
+    <td class="tg-0lax">Biológica</td>
+    <td class="tg-0lax">Indústria</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">norte</td>
+    <td class="tg-0lax">AAA</td>
+    <td class="tg-0lax">28.58757</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">centro</td>
+    <td class="tg-0lax">24.01130</td>
+    <td class="tg-0lax">25.98870</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">sul</td>
+    <td class="tg-0lax">34.57627</td>
+    <td class="tg-0lax">37.42373</td>
+  </tr>
+</tbody>
+</table>
+
+
+O valor de AAA é {:NUMERICAL:=26.41243:0.1}.
+
+
+**(ii)** Com base nos dados recolhidos foi realizado um teste de independência do qui-quadrado sendo o valor observado da estatística de teste \\(\\chi^2=2.2368\\).
+
+<pre>
+	Pearson's Chi-squared test
+
+data:  empresas
+X-squared = 2.2368, df = DF, p-value = VALOR-P
+</pre>
+
+
+
+
+
+O valor-p, em falta na tabela acima, é {:NUMERICAL:=0.3268:0.01}
+
+### feedback
+
+(Consulte o docente.)
